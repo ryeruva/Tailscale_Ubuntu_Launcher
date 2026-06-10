@@ -91,8 +91,6 @@ window {
 
 switch {
     border-radius: 20px;
-    background-color: #ef4444;
-    border: 1px solid #f87171;
     min-height: 28px;
     min-width: 50px;
 }
@@ -100,6 +98,13 @@ switch {
 switch:checked {
     background-color: #00c0a5;
     border-color: #00e5c1;
+    background-image: none;
+}
+
+switch:not(:checked) {
+    background-color: #ef4444;
+    border-color: #f87171;
+    background-image: none;
 }
 
 switch slider {
