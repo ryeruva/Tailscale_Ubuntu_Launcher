@@ -1,0 +1,23 @@
+[Desktop Entry]
+Name=Tailscale Launcher
+Comment=Manage Tailscale connections and view active peers
+Exec=python3 /home/ubuntu/Working_Directory/AppIcon/app.py
+Icon=tailscale-launcher
+Terminal=false
+Type=Application
+Categories=Network;Utility;
+Actions=Connect;Disconnect;Toggle;
+StartupNotify=true
+StartupWMClass=tailscale-launcher
+
+[Desktop Action Connect]
+Name=Connect Tailscale
+Exec=python3 /home/ubuntu/Working_Directory/AppIcon/app.py --connect
+
+[Desktop Action Disconnect]
+Name=Disconnect Tailscale
+Exec=python3 /home/ubuntu/Working_Directory/AppIcon/app.py --disconnect
+
+[Desktop Action Toggle]
+Name=Toggle Connection
+Exec=python3 /home/ubuntu/Working_Directory/AppIcon/app.py --toggle
