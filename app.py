@@ -91,8 +91,8 @@ window {
 
 switch {
     border-radius: 20px;
-    background-color: #263238;
-    border: 1px solid #37474f;
+    background-color: #ef4444;
+    border: 1px solid #f87171;
     min-height: 28px;
     min-width: 50px;
 }

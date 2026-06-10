@@ -6,7 +6,7 @@ echo "Starting Debian package build..."
 # Define directories
 APP_DIR="/home/ubuntu/Working_Directory/AppIcon"
 BUILD_DIR="$APP_DIR/tailscale-launcher-deb"
-ARTIFACTS_DIR="/home/ubuntu/.gemini/antigravity-ide/brain/1e85bb00-38c5-493d-8145-b81ab1f0d3f9"
+ARTIFACTS_DIR="${ARTIFACTS_DIR:-/home/ubuntu/.gemini/antigravity-ide/brain/77835ed3-9924-47db-a017-da58fa9ff1ab}"
 OUTPUT_DEB="$APP_DIR/tailscale-launcher_1.0.0_all.deb"
 
 # Clean previous builds
