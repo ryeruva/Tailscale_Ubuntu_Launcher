@@ -171,6 +171,10 @@ switch slider {
     background: transparent;
     border: none;
     color: #00c0a5;
+    padding: 0;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
 }
 .copy-btn:hover {
     color: #00e5c1;
@@ -573,11 +577,14 @@ class TailscaleLauncherApp:
         self.window.hide()
         return True
 
+    def copy_to_clipboard(self, text):
+        if text and text != "-":
+            clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
+            clipboard.set_text(text, -1)
+
     def on_copy_ip_clicked(self, widget):
         ip = self.ip_val.get_text()
-        if ip and ip != "-":
-            clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
-            clipboard.set_text(ip, -1)
+        self.copy_to_clipboard(ip)
 
     def on_switch_state_set(self, widget, state):
         if self.updating_ui:
@@ -904,9 +911,25 @@ class TailscaleLauncherApp:
             vbox.pack_start(name_lbl, False, False, 0)
             
             peer_ips = peer.get("TailscaleIPs", ["-"])
-            ip_lbl = Gtk.Label(label=peer_ips[0] if peer_ips else "-", xalign=0)
+            peer_ip = peer_ips[0] if peer_ips else "-"
+            
+            peer_ip_hbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+            
+            ip_lbl = Gtk.Label(label=peer_ip, xalign=0)
             ip_lbl.get_style_context().add_class("peer-ip")
-            vbox.pack_start(ip_lbl, False, False, 0)
+            peer_ip_hbox.pack_start(ip_lbl, False, False, 0)
+            
+            if peer_ip != "-":
+                peer_copy_btn = Gtk.Button()
+                peer_copy_btn.get_style_context().add_class("copy-btn")
+                peer_copy_btn.set_relief(Gtk.ReliefStyle.NONE)
+                peer_copy_image = Gtk.Image.new_from_icon_name("edit-copy-symbolic", Gtk.IconSize.MENU)
+                peer_copy_btn.set_image(peer_copy_image)
+                peer_copy_btn.set_tooltip_text("Copy IP to Clipboard")
+                peer_copy_btn.connect("clicked", lambda w, ip=peer_ip: self.copy_to_clipboard(ip))
+                peer_ip_hbox.pack_start(peer_copy_btn, False, False, 0)
+                
+            vbox.pack_start(peer_ip_hbox, False, False, 0)
             
             hbox.pack_start(vbox, True, True, 0)
             
