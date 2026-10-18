@@ -1,14 +1,18 @@
 [Desktop Entry]
 Name=Tailscale Launcher
-Comment=Manage Tailscale connections and view active peers
+Comment=Manage Tailscale connections, view active peers, and share files with TailSend
 Exec=python3 /home/ubuntu/Working_Directory/AppIcon/app.py
 Icon=tailscale-launcher
 Terminal=false
 Type=Application
 Categories=Network;Utility;
-Actions=Connect;Disconnect;Toggle;
+Actions=TailSend;Connect;Disconnect;Toggle;
 StartupNotify=true
 StartupWMClass=tailscale-launcher
+
+[Desktop Action TailSend]
+Name=TailSend (Share Files)
+Exec=python3 /home/ubuntu/Working_Directory/AppIcon/app.py --tailsend
 
 [Desktop Action Connect]
 Name=Connect Tailscale

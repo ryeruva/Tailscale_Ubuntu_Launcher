@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=TailSend
+Comment=Send and receive files across your Tailscale network (Taildrop)
+Exec=python3 /home/ubuntu/Working_Directory/AppIcon/app.py --tailsend %F
+Icon=tailsend
+Terminal=false
+Type=Application
+Categories=Network;FileTransfer;Utility;
+StartupNotify=true
+StartupWMClass=tailscale-launcher
